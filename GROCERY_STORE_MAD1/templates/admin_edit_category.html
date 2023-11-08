@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Category</title>
+</head>
+<body>
+    <h1>Edit Category</h1>
+    <form action="/admin/categories/edit/{{ category.id }}" method="POST">
+        <label for="name">New Name:</label>
+        <input type="text" id="name" name="name" value="{{ category.name }}" required>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

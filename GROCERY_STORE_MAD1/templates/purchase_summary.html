@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grocery Store - Purchase Summary</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5 text-center">
+        <h1 class="display-4">Thank you for purchasing, <span class="text-primary">{{ username }}</span>!</h1>
+        <p class="lead">Your total bill is: <span class="text-success">${{ total_price }}</span></p>
+        <p class="lead">Please visit again.</p>
+        <div class="mt-4">
+            <a class="btn btn-primary btn-lg" href="/search" role="button">Shop More</a>
+        </div>
+        <div class="mt-2">
+            <a class="btn btn-secondary btn-lg" href="/" role="button">Logout</a>
+        </div>
+    </div>
+</html>    

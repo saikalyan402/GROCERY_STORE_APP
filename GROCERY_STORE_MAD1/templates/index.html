@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store</title>
+    <!-- Add Bootstrap CDN link for CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Welcome to the Grocery Store</h1>
+
+        <h2>Login</h2>
+        <ul class="list-unstyled">
+            <li><a href="/admin/login">Login as Admin</a></li>
+            <li><a href="/login">Login as User</a></li>
+        </ul>
+
+        <h2>Search</h2>
+        <form method="POST" action="/search">
+            <div class="form-group">
+                <label for="search_category">Search by Section/Category:</label>
+                <input type="text" id="search_category" name="search_category" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <form method="POST" action="/search">
+            <div class="form-group">
+                <label for="search_price">Search by Price (maximum):</label>
+                <input type="text" id="search_price" name="search_price" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      
+        <form method="POST" action="/search">
+            <div class="form-group">
+                <label for="search_manufacture_date">Search by Manufacture Date (minimum):</label>
+                <input type="date" id="search_manufacture_date" name="search_manufacture_date" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <h2>Latest Products:</h2>
+        <ul class="list-group">
+            {% for product in latest_products %}
+                <li class="list-group-item">{{ product.name }} - {{ product.rate }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</body>
+</html>

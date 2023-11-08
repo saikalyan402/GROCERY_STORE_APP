@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Categories</title>
+</head>
+<body>
+    <h1>Admin Categories</h1>
+
+    <h2>Categories:</h2>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }}
+                <a href="{{ url_for('admin_edit_category', category_id=category.id) }}">Edit</a>
+                <a href="{{ url_for('admin_remove_category', category_id=category.id) }}">Remove</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add Category:</h2>
+    <a href="{{ url_for('admin_add_category') }}">Add New Category</a>
+
+    <h2>Product Management:</h2>
+    <ul>
+        <li><a href="{{ url_for('admin_products') }}">Manage Products</a></li>
+        
+    </ul>
+
+    <p><a href="{{ url_for('admin_logout') }}">Logout</a></p>
+</body>
+</html>

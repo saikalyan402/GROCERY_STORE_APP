@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Store</title>
+</head>
+<body>
+    <h1>Welcome to the Grocery Store {{username}}</h1>
+
+    <h2>Search</h2>
+    <form method="POST" action="/search">
+        <label for="search_category">Search by Section/Category:</label>
+        <input type="text" id="search_category" name="search_category">
+        <input type="submit" value="Search">
+    </form>
+    <form method="POST" action="/search">
+        <label for="search_price">Search by Price (maximum):</label>
+        <input type="text" id="search_price" name="search_price">
+        <input type="submit" value="Search">
+    </form>
+  
+    <form method="POST" action="/search">
+        <label for="search_manufacture_date">Search by Manufacture Date (minimum):</label>
+        <input type="date" id="search_manufacture_date" name="search_manufacture_date">
+        <input type="submit" value="Search">
+    </form>
+
+    <h2>Categories:</h2>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{{ url_for('category_products', category_id=category.id) }}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if selected_category %}
+        <h2>Search Results for {{ selected_category.name }}:</h2>
+        {% if selected_category.products %}
+            <ul>
+                {% for product in selected_category.products %}
+                    <li>{{ product.name }} - {{ product.rate }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found for this category.</p>
+        {% endif %}
+    {% else %}
+        <h2>Search Results:</h2>
+        {% if products %}
+            <ul>
+                {% for product in products %}
+                    <li>{{ product.name }} - {{ product.rate }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+
+    <p><a href="{{ url_for('cart') }}">MyCart</a></p>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>

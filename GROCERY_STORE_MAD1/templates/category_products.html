@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Products</title>
+</head>
+<body>
+    <h1>Category Products</h1>
+    <h2>Category: {{ category.name }}</h2>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.rate }}</li>
+            <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <input type="hidden" name="category_id" value="{{ category.id }}">
+                <input type="number" name="quantity" value="1" min="1">
+                <input type="submit" value="Add to Cart">
+            </form>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ url_for('cart') }}">View Cart</a> |
+    <a href="/search">Home</a>
+</body>
+</html>
